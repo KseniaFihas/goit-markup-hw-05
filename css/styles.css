@@ -42,8 +42,6 @@ img {
 }
 
 .header-page {
-  padding-top: 24px;
-  padding-bottom: 24px;
   border: 1px solid #ececec;
   display: flex;
   align-items: center;
@@ -184,6 +182,24 @@ img {
   color: #212121;
   text-decoration: none;
   display: flex;
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+.current {
+  color: #2196f3;
+  position: relative;
+}
+
+.current::after {
+  content: "";
+  width: 100%;
+  height: 4px;
+  background: #2196f3;
+  border-radius: 2px;
+  position: absolute;
+  display: block;
+  bottom: 0;
 }
 
 .link-nav:hover,
@@ -233,6 +249,7 @@ img {
   font-style: normal;
   margin-bottom: 9px;
 }
+
 .contact {
   font-size: 14px;
   line-height: 1.71;
@@ -241,22 +258,6 @@ img {
   text-decoration: none;
   font-style: normal;
   margin-bottom: 9px;
-}
-
-.current {
-  color: #2196f3;
-  
-}
-
-.current::after {
-  content: "";
-  width: 100%;
-  height: 4px;
-background: #2196F3;
-border-radius: 2px;
-position: relative;
-top: 28px;
-flex-shrink: 0;
 }
 
 .title {
