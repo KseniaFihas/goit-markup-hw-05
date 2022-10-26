@@ -57,8 +57,14 @@
       <section class="decision overlay">
         <div class="container button-buy">
           <h1 class="title">Ефективні рішення для вашого бізнесу</h1>
-          <button class="button" type="button">Замовити послугу</button>
+          <button data-modal-open class="button" type="button">Замовити послугу</button>
+          <div class="backdrop is-hidden" data-modal>
+            <div class="modal">
+              <button data-modal-close class="close" type="button">Close</button>
+            </div>
+          </div>
         </div>
+        
       </section>
 
       <section class="section-details">
