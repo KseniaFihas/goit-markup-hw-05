@@ -86,15 +86,15 @@ img {
   background-size: cover;
 }
 
-
 .backdrop {
   position: fixed;
   width: 100%;
-    height: 100%;
-  top:0;
-  left:0;
+  height: 100%;
+  top: 0;
+  left: 0;
   background-color: rgba(0, 0, 0, 0.2);
- 
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    vissbility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .backdrop.is-hidden {
@@ -105,15 +105,44 @@ img {
 .modal {
   position: absolute;
   width: 528px;
-  height: 581px;
+  min-height: 581px;
   top: 50%;
   left: 50%;
-  background: #FFFFFF;
+  transform: translate(-50%, -50%);
+  background: #ffffff;
   border-radius: 4px;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
-  
-  
-  transform: translate(-50% -50%);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  transform: translate(-50%, -50%) rotate(0);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-radius 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) rotate(-360deg);
+  border-radius: 50%;
+}
+
+.close {
+  width: 30px;
+  height: 30px;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  fill: #000000;
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.is-hiden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .decision {
@@ -166,6 +195,8 @@ img {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
   fill: #ffffff;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-soc-link:hover,
@@ -214,6 +245,7 @@ img {
   display: flex;
   padding-top: 32px;
   padding-bottom: 32px;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .current {
@@ -248,6 +280,8 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .mail-icon {
@@ -419,6 +453,41 @@ img {
   text-decoration: none;
 }
 
+.wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-image:hover .hover-text {
+  transform: translateY(0);
+}
+
+.hover-text {
+  position: absolute;
+  top: 0;
+  font-style: normal;
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-top: 63px;
+  padding-bottom: 63px;
+  background-color: rgba(33, 150, 243, 0.9);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.56;
+  letter-spacing: 0.03em;
+  color: #ffffff;
+  height: 100%;
+  transform: translateY(100%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: auto;
+}
+
+.portfolio-image {
+  width: calc((100% - 60px) / 3);
+  border-bottom: 1px solid #eeeeee;
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .portfolio-image:hover {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
@@ -458,19 +527,17 @@ img {
   padding-right: 22px;
   border-radius: 4px;
   border: 0;
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .button-filter:hover,
 .button-filter:focus {
-  background: var(--button-color);
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.62;
-  text-align: center;
-  letter-spacing: 0.03em;
+  background-color: var(--button-color);
   color: var(--brand-color);
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
-  border-radius: 4px;
 }
 
 .button-filter:active {
@@ -513,12 +580,6 @@ img {
   display: flex;
   gap: 30px;
   flex-wrap: wrap;
-}
-
-.portfolio-image {
-  width: calc((100% - 60px) / 3);
-
-  border-bottom: 1px solid #eeeeee;
 }
 
 .auth-nav {
@@ -569,6 +630,8 @@ img {
   background: #ffffff;
   border-radius: 50%;
   fill: #afb1b8;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .soc-link:hover,
@@ -622,10 +685,12 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .client-icon {
   fill: #afb1b8;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .client-link:hover,
